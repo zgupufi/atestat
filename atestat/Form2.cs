@@ -112,14 +112,14 @@ namespace atestat
         }
         private async Task ShowNivelScreen()
         {
-            // Create a new form to display the black screen
+    
             Form blackScreenForm = new Form();
             blackScreenForm.FormBorderStyle = FormBorderStyle.None;
             blackScreenForm.BackColor = System.Drawing.Color.Black;
             blackScreenForm.StartPosition = FormStartPosition.CenterScreen;
             blackScreenForm.Size =new Size (500,650);
 
-            // Create a label with the text "Nivel [nivel]"
+     
             System.Windows.Forms.Label nivelLabel = new System.Windows.Forms.Label();
             nivelLabel.Text = "Nivelul " + nivel;
             nivelLabel.ForeColor = System.Drawing.Color.White;
@@ -141,13 +141,13 @@ namespace atestat
             schimb.Location = new System.Drawing.Point((blackScreenForm.ClientSize.Width - schimb.Width) / 2, (blackScreenForm.ClientSize.Height - schimb.Height) / 2+48);
             blackScreenForm.Controls.Add(schimb);
 
-            // Show the black screen form
+           
             blackScreenForm.Show();
 
-            // Wait for 3 seconds
+           
             await Task.Delay(1500);
 
-            // Close the black screen form after 3 seconds
+            
             blackScreenForm.Close();
         }
         private void label1_Click_1(object sender, EventArgs e)
@@ -310,15 +310,7 @@ namespace atestat
                 pickey.Top += 10;
                 usaNivel.Top += 10;
                 ///sa pun cheia
-                if ((pickey.Top + pickey.Height >= 650) && scor % 10 == 0)
-                {
-                    Random rnd = new Random();
-
-                    int loc = rnd.Next(pickey.Height, 500 - pickey.Width);
-                    pickey.Location = new Point(loc, 0);
-                    pickey.Visible = true;
-
-                }
+               
                 
                 for (int j = 1; j <= nrguard; j++)
                 {
@@ -413,7 +405,7 @@ namespace atestat
                         {
                             mort = true;
                             timer1.Stop();
-                            var result = MessageBox.Show("Vrei sa resetezi?", "Meniu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            var result = MessageBox.Show("Ai eliberat "+ score + " prizonieri.Vrei să mai încerci?", "Meniu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (result == DialogResult.No)
                             {
                                 this.Close();
@@ -437,7 +429,8 @@ namespace atestat
             {
                 mort = true;
                 timer1.Stop();
-                var result = MessageBox.Show("Vrei sa resetezi?", "Meniu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Ai eliberat " + score + " prizonieri.Vrei să mai încerci?", "Meniu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
                 if (result == DialogResult.No)
                 {
                     this.Close();
